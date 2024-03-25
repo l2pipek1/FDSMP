@@ -1,2 +1,0 @@
-# FDSMP
-Bot

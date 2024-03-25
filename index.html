@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Guessing Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #222; /* Ciemne tło */
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color: #fff; /* Biały kolor tekstu */
+        margin-top: 20px; /* Odstęp od góry */
+    }
+    #guessInput {
+        margin: 20px auto; /* Wyśrodkowanie pola */
+        padding: 15px;
+        border-radius: 50px; /* Zaokrąglenie krawędzi */
+        border: 2px solid #fff; /* Biała obramówka */
+        font-size: 20px;
+        background-color: #444; /* Kolor tła pola */
+        color: #fff; /* Kolor tekstu */
+        text-align: center;
+        width: 80%; /* Szerokość pola */
+        max-width: 400px; /* Maksymalna szerokość */
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Cień */
+        animation: pulse 2s infinite alternate; /* Animacja pulsowania */
+    }
+    #guessInput:focus {
+        outline: none; /* Usunięcie obramowania na focus */
+    }
+    button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease; /* Płynne przejście koloru tła */
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    #result {
+        color: #fff; /* Biały kolor tekstu */
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    /* Responsywność */
+    @media screen and (max-width: 600px) {
+        h1 {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        #guessInput {
+            width: 90%;
+        }
+    }
+</style>
+</head>
+<body>
+<h1>Number Guessing Game</h1>
+<input type="number" id="guessInput" min="1" max="1000000" placeholder="Enter a number from 1 to 1,000,000">
+<br>
+<button onclick="checkGuess()">Check</button>
+<p id="result"></p>
+
+<script>
+function checkGuess() {
+    var randomNumber = Math.floor(Math.random() * 1000000) + 1;
+    var userGuess = parseInt(document.getElementById("guessInput").value);
+
+    if (isNaN(userGuess)) {
+        document.getElementById("result").innerHTML = "Please enter a number!";
+    } else {
+        if (userGuess === randomNumber) {
+            document.getElementById("result").innerHTML = "Congratulations! You guessed the number " + randomNumber + "!";
+        } else {
+            document.getElementById("result").innerHTML = "Sorry, the number " + userGuess + " is incorrect. Try again.";
+        }
+    }
+}
+</script>
+</body>
+</html>
